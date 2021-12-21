@@ -1,7 +1,7 @@
 import express from "express";
 import {} from "express-async-errors";
 import { body } from "express-validator";
-import { validate } from "../middleware/validator";
+import { validate } from "../middleware/validator.js";
 import * as authController from "../controller/auth.js";
 
 const router = express.Router();
@@ -29,7 +29,7 @@ const validateSignup = [
   validate,
 ];
 
-router.post("/signup", validateSignup, authController.validateSignup);
+router.post("/signup", validateSignup, authController.signup);
 
 router.post("/login", validateCredential, authController.login);
 
