@@ -52,5 +52,5 @@ export async function deleteTweet(req, res, next) {
   }
   await tweetRepository.remove(id);
   res.sendStatus(204);
-  getSocketIO().emit("tweets-deleted");
+  getSocketIO().emit("tweets-deleted", id);
 }

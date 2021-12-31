@@ -17,7 +17,13 @@ const Tweets = memo(({ tweetService, username, addable }) => {
       .then((tweets) => setTweets([...tweets]))
       .catch(onError);
 
-    const stopSync = tweetService.onSync("tweets", (tweet) => onCreated(tweet));
+    let stopSync = tweetService.onSync("tweets", (tweet) => onCreated(tweet));
+    stopSync = tweetService.onSync("tweets-updated", (tweet) =>
+      onUpdated(tweet)
+    );
+    stopSync = tweetService.onSync("tweets-deleted", (tweetId) =>
+      onDeleted(tweetId)
+    );
     return () => stopSync();
   }, [tweetService, username, user]);
 
@@ -25,23 +31,27 @@ const Tweets = memo(({ tweetService, username, addable }) => {
     setTweets((tweets) => [tweet, ...tweets]);
   };
 
+  const onUpdated = (tweet) => {
+    setTweets((tweets) =>
+      tweets.map((item) => (item.id === tweet.id ? tweet : item))
+    );
+  };
+
+  const onDeleted = (tweetId) => {
+    setTweets((tweets) => tweets.filter((tweet) => tweet.id !== tweetId));
+  };
+
   const onDelete = (tweetId) => {
     tweetService
       .deleteTweet(tweetId)
-      .then(() =>
-        setTweets((tweets) => tweets.filter((tweet) => tweet.id !== tweetId))
-      )
+      .then(() => {})
       .catch((error) => setError(error.toString()));
   };
 
   const onUpdate = (tweetId, text) => {
     tweetService
       .updateTweet(tweetId, text)
-      .then((updated) =>
-        setTweets((tweets) =>
-          tweets.map((item) => (item.id === updated.id ? updated : item))
-        )
-      )
+      .then((updated) => {})
       .catch((error) => error.toString());
   };
 
