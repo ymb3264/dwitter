@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
+import React, { memo } from "react";
 
 const Banner = memo(({ text, isAlert }) => (
   <>
     {text && (
-      <p className={`banner ${isAlert ? 'banner-red' : 'banner-green'}`}>
+      <p className={`banner ${isAlert ? "banner-red" : "banner-green"}`}>
         {text}
       </p>
     )}

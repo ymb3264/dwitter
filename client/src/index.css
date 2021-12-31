@@ -14,8 +14,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -27,7 +27,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -116,10 +116,11 @@ button {
 }
 
 .form-btn {
-  font-size: 1.2rem;
+  font-size: 1rem;
   background: var(--color-blue);
   font-weight: bold;
   padding: 4px;
+  width: 10%;
 }
 
 .form-btn-small {
@@ -246,7 +247,7 @@ button {
 }
 
 .tweet-input {
-  width: 100%;
+  width: 90%;
   margin-right: 4px;
 }
 
@@ -282,4 +283,22 @@ button {
 .form-btn-cancel {
   margin-left: 8px;
   background: var(--color-red);
+}
+.profile-image-label {
+  margin: 10px;
+  color: #585858;
+}
+.profile-image-box {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+.profile-image-item {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.selected {
+  border: solid;
+  border-color: #1a9ff0;
 }

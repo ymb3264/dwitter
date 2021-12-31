@@ -22,7 +22,7 @@ const validateCredential = [
 const validateSignup = [
   ...validateCredential,
   body("name").notEmpty().withMessage("name is missing"),
-  body("email").isEmail().normalizeEmail().withMessage("invalid email"),
+  // body("email").isEmail().normalizeEmail().withMessage("invalid email"),
   body("url")
     .isURL()
     .withMessage("invalid URL")
